@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>プレゼンテーション</title>
+<style>
+#infobar{
+	width:100%;
+	position:fixed;
+	left:0;
+	bottom:0;
+}
+.part{
+	z-index:2;
+}
+.deleter{
+	z-index:10;
+}
+.box{
+	visibility:hidden;
+}
+.box *:not(.box){
+	visibility:visible;
+}
+
+#info_mode,#info_next{
+	display:inline-block;
+	width:32px;
+	height:32px;
+	background-image:url(icons.png);
+	background-repeat:no-repeat;
+	background-position:0px 0px;
+	text-indent:-9999px;
+}
+body{
+	background-color:#ffffff;
+}
+</style>
+<script type="text/javascript" src="presen.js"></script>
+</head>
+<body>
+<div id="infobar"><span id="info_mode"></span><span id="info_next"></span><span id="info"></span></div>
+</body>
+</html>
+

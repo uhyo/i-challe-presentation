@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<parts>
+  <style>
+    <p name="font-size">100px</p>
+    <p name="color">#FF0000</p>
+    <p name="font-family">serif</p>
+  </style>
+  <part>プレゼンテーション</part>
+<!--  <part x="0" y="0">位置固定</part>
+  <box>
+    <part x="-200" y="-200">左上</part>
+    <part x="200" y="200">右下</part>
+    <part style="color:#0000FF;font-size:120px">同時</part>
+  </box>
+  <delete/>
+  <delete-all type="turn-right"/>
+  <box>
+    <part x="-300" y="100">test</part>
+    <part x="-100" y="0">test</part>
+    <part x="200" y="-100">test</part>
+  </box>
+  <delete-all type="turn-left"/>
+  <box>
+    <part x="-300" y="100">test</part>
+    <part x="-100" y="0">test</part>
+    <part x="200" y="-100">test</part>
+    <part style="color:#000000" x="0" y="0">シーンチェンジ</part>
+  </box>
+  <box>
+    <delete-all type="fade"/>
+    <part x="0" y="-100">次の</part>
+    <part x="-100" y="0">シーン</part>
+  </box>
+  <box>
+    <delete-all type="slide-down"/>
+    <part x="0" y="-100">次の</part>
+    <part x="-100" y="0">シーン</part>
+  </box>-->
+  
+  <part>クリックで次に進む</part>
+  <part>右クリックで文字を消す</part>
+  <part style="color:#000000;font-size:200px">キー操作</part>
+  <part>Zキーで通常モード</part>
+  <part>Xキーでドラッグモード</part>
+  <part style="font-size:80px">→既存の文字を動かせる</part>
+  
+  <style>
+    <p name="color">#000000</p>
+  </style>
+  <box>
+    <delete-all type="turn-right"/>
+    <part style="color:#CC0000;font-family:fantasy">ICT Challenge+R</part>
+    <part x="0" y="120">後に追加された</part>
+    <part type="right" style="font-size:200px;color:#0000FF" x="100" y="240">新機能</part>
+    <part x="200" y="440">の紹介</part>
+  </box>
+  <box>
+    <part type="left" x="-100" y="-100">複数パーツ</part>
+    <part type="right" x="0" y="20" style="font-size:200px">同時表示</part>
+  </box>
+  <part>シーン初期化</part>
+  <delete-all type="turn-left"/>
+  <box>
+    <part x="-200" y="-200">左下の</part>
+    <part style="font-size:200px;color:#FF0000" x="-120" y="-100">アイコン</part>
+    <part type="right" x="20" y="100" style="font-size:80px">→状況をわかりやすく表示</part>
+  </box>
+  <box x="100" y="100">
+    <delete-all type="slide-up" />
+    <part style="font-size:400px;color:#000000" x="250" y="150">終</part>
+  </box>
+</parts>
