@@ -5,38 +5,55 @@
     <p name="color">#FF0000</p>
     <p name="font-family">serif</p>
   </style>
-  <part>プレゼンテーション</part>
-<!--  <part x="0" y="0">位置固定</part>
+  <!--
+  <part type="left">Befunge</part>
+  <part type="right" style="color:#0000ff;font-family:fantasy;">ONLINE</part>
+  <style>
+    <p name="color">#000000</p>
+  </style>
+  <part style="color:#000000">&#x2196;</part>
+  <part style="font-size:150px">node.js</part>
+  <part style="color:#ff0000" type="left">Socket.IO</part>
+  <part style="color:#0000ff;font-size:180px">よくある</part>
+-->
+  <!-- Befungeの紹介 -->
+  <style>
+    <p name="color">#000000</p>
+  </style>
+  <!--
   <box>
-    <part x="-200" y="-200">左上</part>
-    <part x="200" y="200">右下</part>
-    <part style="color:#0000FF;font-size:120px">同時</part>
+    <delete-all type="slide-up"/>
+    <part style="color:#ff0000;font-size:180px">Befunge</part>
   </box>
-  <delete/>
-  <delete-all type="turn-right"/>
+  <part type="right">とは?</part>
   <box>
-    <part x="-300" y="100">test</part>
-    <part x="-100" y="0">test</part>
-    <part x="200" y="-100">test</part>
+    <part style="color:#ff0000;font-size:120px">1998年</part>
+    <part type="right" x="100" y="120">完成</part>
   </box>
-  <delete-all type="turn-left"/>
+  <part style="font-size:160px">Funge</part>
   <box>
-    <part x="-300" y="100">test</part>
-    <part x="-100" y="0">test</part>
-    <part x="200" y="-100">test</part>
-    <part style="color:#000000" x="0" y="0">シーンチェンジ</part>
+    <part x="0" y="-120" style="color:#6699ff">Unefunge</part>
+    <part x="0" y="120" style="color:#ff6633">Trefunge</part>
   </box>
+-->
   <box>
-    <delete-all type="fade"/>
-    <part x="0" y="-100">次の</part>
-    <part x="-100" y="0">シーン</part>
+    <delete-all type="turn-right"/>
+    <part style="color:#ff0000;font-size:180px">Befunge</part>
   </box>
+  <part>とは?</part>
   <box>
-    <delete-all type="slide-down"/>
-    <part x="0" y="-100">次の</part>
-    <part x="-100" y="0">シーン</part>
-  </box>-->
-  
+    <part>唯一の資料</part>
+    <part x="0" y="100" style="font-size:60px">http://quadium.net/funge/spec98.html</part>
+  </box>
+  <part type="right" style="color:#0000ff">公式</part>
+
+  <box>
+    <part type="left" style="font-size:200px;color:red">二次元</part>
+    <part x="200" y="160">プログラミング言語</part>
+  </box>
+  <part>一次元</part>
+  <video loop="yes" src="media/loop.webm"/>
+
   <part>クリックで次に進む</part>
   <part>右クリックで文字を消す</part>
   <part style="color:#000000;font-size:200px">キー操作</part>

@@ -137,21 +137,28 @@ Presen.prototype={
 					var item=ps.item(i);
 					this.style[item.getAttribute('name')]=item.textContent;
 				}
-			}else if(node.nodeName=="part" || node.nodeName=="img" || node.nodeName=="box"){
+			}else if(node.nodeName==="part" || node.nodeName==="img" || node.nodeName==="box" || node.nodeName==="video"){
 				//部品
 				var part;
-				if(node.nodeName=="part"){
+				if(node.nodeName==="part"){
 					part=document.createElement("div");
 					part.textContent=node.textContent;
-				}else if(node.nodeName=="img"){
+				}else if(node.nodeName==="img"){
 					part=document.createElement("img");
 					part.src=node.getAttribute("src");
-				}else if(node.nodeName=="box"){
+				}else if(node.nodeName==="box"){
 					part=document.createElement("div");
 					part.style.width=document.documentElement.clientWidth+"px";
 					part.style.height=document.documentElement.clientHeight+"px";
-					
+				}else if(node.nodeName==="video"){
+					part=document.createElement("video");
+					part.src=node.getAttribute("src");
+					part.autoplay=true;
+					if(node.hasAttribute("width"))part.width=parseInt(node.getAttribute("width"));
+					if(node.hasAttribute("height"))part.height=parseInt(node.getAttribute("height"));
+					if(node.getAttribute("loop")==="yes")part.loop=true;
 				}
+
 				for(var i in this.style){
 					part.style.setProperty(i,this.style[i],"");
 				}
