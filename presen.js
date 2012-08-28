@@ -36,11 +36,15 @@ function Presen(ite){
 }
 Presen.prototype={
 	init:function(){
+		var t=this;
 		this.setinfo();
 		document.addEventListener('mousedown',md.bind(this),false);
 		document.addEventListener('mousemove',mmv.bind(this),false);
 		document.addEventListener('mouseup',mu.bind(this),false);
-		document.addEventListener('keydown',kd.bind(this),false);
+		//document.addEventListener('keydown',kd.bind(this),false);
+		document.addEventListener('keydown',function(e){
+			kd.call(t,e);
+		},false);
 		document.addEventListener('contextmenu',cx.bind(this),false);
 
 		function md(e){
@@ -50,7 +54,9 @@ Presen.prototype={
 					e.target.style.zIndex="1";
 					e.target.classList.add("gone");
 					setTimeout(function(){
-						e.target.parentNode.removeChild(e.target);
+						if(e.target.parentNode){
+							e.target.parentNode.removeChild(e.target);
+						}
 					},1000);
 				}
 				e.stopPropagation();
@@ -91,6 +97,10 @@ Presen.prototype={
 			s.left=(px-this.dofx)+"px",s.top=(py-this.dofy)+"px";
 		}
 		function mu(e){
+			if(this.dragging && this.dragging.classList.contains("box")){
+				//boxは中身を展開する
+				this.extractBox(this.dragging);
+			}
 			this.dragging=null;
 		}
 		function kd(e){
@@ -158,6 +168,9 @@ Presen.prototype={
 					if(node.hasAttribute("height"))part.height=parseInt(node.getAttribute("height"));
 					if(node.getAttribute("loop")==="yes")part.loop=true;
 				}
+				//レベルを決める
+				var level=parseInt(node.getAttribute("fixlevel"))||1;
+				part.dataset.fixlevel=level;	//boxにつけても効かないかな...
 
 				for(var i in this.style){
 					part.style.setProperty(i,this.style[i],"");
@@ -185,9 +198,11 @@ Presen.prototype={
 				part.classList.add("part");
 				part.classList.add("nodelete");
 				parent.appendChild(part);
-				if(node.nodeName=="box"){
+				if(node.nodeName==="box"){
 					for(var i=0,l=node.childNodes.length;i<l;i++){
-						(command.bind(this))(null,node.childNodes.item(i),part);
+						if(node.childNodes[i].nodeType===Node.ELEMENT_NODE){
+							(command.bind(this))(null,node.childNodes.item(i),part);
+						}
 					}
 					part.classList.add("box");
 				}
@@ -235,6 +250,9 @@ Presen.prototype={
 					}else{
 						this.dofx=part.clientWidth/2,this.dofy=part.clientHeight/2;
 					}
+				}else if(part.classList.contains("box")){
+					//boxをその場で展開
+					this.extractBox(part);
 				}
 
 			}else if(node.nodeName=="delete"){
@@ -252,6 +270,8 @@ Presen.prototype={
 				//全部消す
 				var part=document.createElement("div");
 				var type=node.getAttribute("type");
+				//level(fixlevelがこれより大きいノードは消せない)
+				var level=parseInt(node.getAttribute("level")) || 1;
 				
 				part.classList.add("fixed");
 				part.classList.add("deleter");
@@ -275,37 +295,46 @@ Presen.prototype={
 				
 				var ch=document.body.childNodes;
 				for(var i=0,l=ch.length;i<l;i++){
-					if(ch.item(i).classList && ch.item(i).classList.contains("part") && !ch.item(i).classList.contains("nodelete")){
-						part.appendChild(ch.item((l--,i--)));
+					var n=ch.item(i);
+					if(n.classList && n.classList.contains("part") && !n.classList.contains("nodelete")){
+						//fixlevel条件
+						var lv=parseInt(n.dataset.fixlevel)||1;
+						if(lv<=level){
+							//消去力が足りる
+							//part.appendChild(ch.item((l--,i--)));
+							part.appendChild(n);
+							l--,i--;
+						}
 					}
 				}
 				document.body.appendChild(part);
-				part.style.backgroundColor=document.defaultView.getComputedStyle(document.body,null).backgroundColor;
-				
-				
-				switch(type){
-				case "turn-right":
-					setse(part.style,"transform","rotate(90deg)");
-					break;
-				case "turn-left":
-					setse(part.style,"transform","rotate(-90deg)");
-					break;
-				case "fade":
-					part.style.opacity="0";
-					break;
-				case "slide-left":
-					setse(part.style,"transform","translate(-"+part.style.width+",0)");
-					break;
-				case "slide-up":
-					setse(part.style,"transform","translate(0,-"+part.style.height+")");
-					break;
-				case "slide-right":
-					setse(part.style,"transform","translate("+part.style.width+",0)");
-					break;
-				case "slide-down":
-					setse(part.style,"transform","translate(0,"+part.style.height+")");
-					break;
-				}
+				//part.style.backgroundColor=document.defaultView.getComputedStyle(document.body,null).backgroundColor;
+				//よくわからないけど間を入れる
+				setTimeout(function(){
+					switch(type){
+					case "turn-right":
+						setse(part.style,"transform","rotate(90deg)");
+						break;
+					case "turn-left":
+						setse(part.style,"transform","rotate(-90deg)");
+						break;
+					case "fade":
+						part.style.opacity="0";
+						break;
+					case "slide-left":
+						setse(part.style,"transform","translate(-"+part.style.width+",0)");
+						break;
+					case "slide-up":
+						setse(part.style,"transform","translate(0,-"+part.style.height+")");
+						break;
+					case "slide-right":
+						setse(part.style,"transform","translate("+part.style.width+",0)");
+						break;
+					case "slide-down":
+						setse(part.style,"transform","translate(0,"+part.style.height+")");
+						break;
+					}
+				},0);
 				setTimeout(function(){
 					part.parentNode.removeChild(part);
 				},1000);
@@ -318,6 +347,27 @@ Presen.prototype={
 			});
 		}
 
+	},
+	//boxを展開
+	extractBox:function(box){
+		//座標を手に入れておく
+		var ax=parseInt(box.style.left)||0, ay=parseInt(box.style.top)||0;	//"px"除去
+		var range=document.createRange();
+		range.selectNodeContents(box);	//中身
+		var df=range.extractContents();
+		var c=df.childNodes;
+		for(var i=0,l=c.length;i<l;i++){
+			var cc=c[i];
+			if(cc.nodeType===Node.ELEMENT_NODE){
+				var xx=parseInt(cc.style.left)||0, yy=parseInt(cc.style.top)||0;
+				cc.style.left=(ax+xx)+"px", cc.style.top=(ay+yy)+"px";
+			}
+		}
+		//置き換え
+		if(box.parentNode){
+			box.parentNode.replaceChild(df,box);
+		}
+		range.detach();
 	},
 	setinfo:function(){
 		if(this.mode=="link"){
@@ -407,16 +457,30 @@ PresenIterator.prototype={
 		var res=this.xml.evaluate('/parts/*',this.xml,null,XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE,null);
 		var snl=res.snapshotLength;
 		var l=Math.min(snl,7);
-		var ret=snl+" steps stack.";
+		var ret=snl+" steps stack.  ";
 		for(var i=0;i<l;i++){
 			var item=res.snapshotItem(i);
-			ret+= " "+item.nodeName;
-			if(item.nodeName=="part"){
-				ret+="("+item.textContent+")";
-			}
+			ret+=" "+nst(item);
 		}
 		if(snl>l)ret+="...";
 		return ret;
+		//ノードから概要文字列
+		function nst(node){
+			var ret=node.nodeName;
+			if(node.nodeName==="part"){
+				ret+="("+node.textContent+")";
+			}else if(node.nodeName==="box"){
+				ret+="(";
+				var c=node.childNodes;
+				for(var i=0,l=c.length;i<l;i++){
+					if(c[i].nodeType===Node.ELEMENT_NODE){
+						ret+=" "+nst(c[i]);
+					}
+				}
+				ret+=" )";
+			}
+			return ret;
+		}
 	},
 	get next(){
 		var first=this.xml.evaluate('/parts/*',this.xml,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);

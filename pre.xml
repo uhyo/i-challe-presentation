@@ -38,9 +38,9 @@
 -->
   <box>
     <delete-all type="turn-right"/>
-    <part style="color:#ff0000;font-size:180px">Befunge</part>
+    <part style="color:#ff0000;font-size:180px" fixlevel="2">Befunge</part>
   </box>
-  <part>とは?</part>
+  <part fixlevel="2">とは?</part>
   <box>
     <part>唯一の資料</part>
     <part x="0" y="100" style="font-size:60px">http://quadium.net/funge/spec98.html</part>
@@ -51,8 +51,29 @@
     <part type="left" style="font-size:200px;color:red">二次元</part>
     <part x="200" y="160">プログラミング言語</part>
   </box>
+  <part style="font-family:monospace;font-size:28px;white-space:pre">//JavaScript
+ss.http.router.on('/',function(req,res){
+	res.serveClient('main');
+});
+
+ss.client.formatters.add(require('ss-coffee'));
+ss.client.formatters.add(require('ss-jade'));
+ss.client.formatters.add(require('ss-stylus'));
+
+ss.client.templateEngine.use(require('ss-clientjade'));
+
+ss.client.set({liveReload: false});
+ss.session.store.use('redis');
+ss.publish.transport.use('redis');
+...</part>
+  <part style="color:red;font-size:150px">↓</part>
+
   <part>一次元</part>
   <video loop="yes" src="media/loop.webm"/>
+  <img src="media/lkh_arrow.png"/>
+  <part>ワープ</part>
+  <part type="right" style="font-size:120px">異次元</part>
+  <delete-all type="slide-left"/>
 
   <part>クリックで次に進む</part>
   <part>右クリックで文字を消す</part>
