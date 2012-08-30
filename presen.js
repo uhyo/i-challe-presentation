@@ -166,7 +166,7 @@ Presen.prototype={
 					part.autoplay=true;
 					if(node.hasAttribute("width"))part.width=parseInt(node.getAttribute("width"));
 					if(node.hasAttribute("height"))part.height=parseInt(node.getAttribute("height"));
-					if(node.getAttribute("loop")==="yes")part.loop=true;
+					if(node.getAttribute("loop")!=="no")part.loop=true;
 				}
 				//レベルを決める
 				var level=parseInt(node.getAttribute("fixlevel"))||1;
@@ -269,30 +269,21 @@ Presen.prototype={
 			}else if(node.nodeName=="delete-all"){
 				//全部消す
 				var part=document.createElement("div");
-				var type=node.getAttribute("type");
+				var type=node.getAttribute("type") || "fade";
 				//level(fixlevelがこれより大きいノードは消せない)
 				var level=parseInt(node.getAttribute("level")) || 1;
+				//時間(数字)
+				var du=parseFloat(node.getAttribute("duration")) || 0.5;
+				var duration=du+"s";
+				//もうひとつ必要かも・・・
+				var part2;
 				
 				part.classList.add("fixed");
 				part.classList.add("deleter");
 				
 				part.style.position="absolute",part.style.left="0px",part.style.top="0px";
 				part.style.width=document.documentElement.clientWidth+"px",part.style.height=document.documentElement.clientHeight+"px";
-				switch(type){
-				case "turn-right":case "turn-left":
-					setse(part.style,"transition","#{pref}transform 0.5s linear");
-					setse(part.style,"transform-origin",type=="turn-right"?"right bottom":"left bottom");
-					setse(part.style,"transform","rotate(0deg)");
-					break;
-				case "fade":
-					setse(part.style,"transition","opacity 0.5s linear");
-					part.style.opacity="1";
-					break;
-				case "slide-left":case "slide-up":case "slide-right":case "slide-down":
-					setse(part.style,"transition","#{pref}transform 0.5s ease-out");
-					
-				}
-				
+				//partに中身入れる
 				var ch=document.body.childNodes;
 				for(var i=0,l=ch.length;i<l;i++){
 					var n=ch.item(i);
@@ -307,8 +298,100 @@ Presen.prototype={
 						}
 					}
 				}
-				document.body.appendChild(part);
+
+				switch(type){
+				case "turn-right":case "turn-left":
+					setse(part.style,"transition","#{pref}transform "+duration+" linear");
+					setse(part.style,"transform-origin",type=="turn-right"?"right bottom":"left bottom");
+					setse(part.style,"transform","rotate(0deg)");
+					break;
+				case "fade":
+					setse(part.style,"transition","opacity "+duration+" linear");
+					part.style.opacity="1";
+					break;
+				case "slide-left":case "slide-up":case "slide-right":case "slide-down":
+					setse(part.style,"transition","#{pref}transform "+duration+" ease-out");
+					break;
+				case "img-slide-left":case "img-slide-up":case "img-slide-right":case "img-slide-down":
+					//もとのほうははみ出たらだめ
+					part.style.overflow="hidden";
+					part.style.whiteSpace="nowrap";
+					//画像
+					setse(part.style,"transition","width "+duration+" linear, height "+duration+" linear, left "+duration+" linear, top "+duration+" linear");
+					//画像を載せたdivを生成する
+					part2=document.createElement("div");
+					part2.style.position="absolute";
+					setse(part2.style,"transition","left "+duration+" linear, top "+duration+" linear");
+					part2.style.zIndex="100";
+					//読み込みディレイ発生
+					var imgnode=node.getElementsByTagName("img")[0];
+					if(!imgnode)return;
+					var img=new Image();
+					img.addEventListener("load",function(){
+						//画像を生成
+						var w=img.naturalWidth,h=img.naturalHeight;
+						if(type==="img-slide-left"||type==="img-slide-right"){
+							//縦に並べる
+							var y=0;
+							while(y<document.documentElement.clientHeight){
+								var d=Math.max(10,h/5);	//最大
+								var delta=-Math.floor(Math.random()*d);	//-dだけずれる
+								var i=new Image();
+								i.src=img.src;
+								i.style.position="absolute";
+								i.style.left=Math.floor(-w/2)+"px";
+								i.style.top=y+"px";
+								part2.appendChild(i);
+								y+=h+delta;
+							}
+							//はじめの位置
+							if(type==="img-slide-left"){
+								part2.style.top="0px";
+								part2.style.left=document.documentElement.clientWidth+"px";
+							}else{
+								part2.style.top="0px";
+								part2.style.left="0px";
+							}
+						}else{
+							//横に並べる
+							var x=0;
+							while(x<document.documentElement.clientWidth){
+								var d=Math.max(10,w/5);	//最大
+								var delta=-Math.floor(Math.random()*d);	//-dだけずれる
+								var i=new Image();
+								i.src=img.src;
+								i.style.position="absolute";
+								i.style.left=x+"px";
+								i.style.top=Math.floor(-h/2)+"px";
+								part2.appendChild(i);
+								x+=x+delta;
+							}
+							//はじめの位置
+							if(type==="img-slide-up"){
+								part2.style.top=document.documentElement.clientHeight;
+								part2.style.left="0px";
+							}else{
+								part2.style.top="0px";
+								part2.style.left="0px";
+							}
+						}
+						//流す
+						startEffect(type,part,part2);
+					},false);
+					img.src=imgnode.getAttribute("src");
+					//あとでやるのでストップ
+					return;
+					//break;
+				}
+				
+				startEffect(type,part,part2);
 				//part.style.backgroundColor=document.defaultView.getComputedStyle(document.body,null).backgroundColor;
+			}
+			this.setinfo();
+			//エフェクトを始動させる
+			function startEffect(type,part,part2){	//part2: optional
+				document.body.appendChild(part);
+				if(part2)document.body.appendChild(part2);
 				//よくわからないけど間を入れる
 				setTimeout(function(){
 					switch(type){
@@ -333,13 +416,32 @@ Presen.prototype={
 					case "slide-down":
 						setse(part.style,"transform","translate(0,"+part.style.height+")");
 						break;
+					case "img-slide-left":
+						//位置をアレする
+						part2.style.left="0px";
+						part.style.width="0px";
+						break;
+					case "img-slide-right":
+						part2.style.left=document.documentElement.clientWidth+"px";
+						part.style.left=document.documentElement.clientWidth+"px";
+						part.style.width="0px";
+						break;
+					case "img-slide-up":
+						part2.style.top="0px";
+						part.style.heght="0px";
+						break;
+					case "img-slide-down":
+						part2.style.top=document.documentElement.clientHeight+"px";
+						part.style.top=document.documentElement.clientHeight+"px";
+						part.style.heght="0px";
+						break;
 					}
 				},0);
 				setTimeout(function(){
 					part.parentNode.removeChild(part);
-				},1000);
+					if(part2)part2.parentNode.removeChild(part2);
+				},1000*du);
 			}
-			this.setinfo();
 		}
 		function setse(st,prop,value){
 			["-webkit-","-moz-","-o-",""].forEach(function(x){
@@ -469,6 +571,8 @@ PresenIterator.prototype={
 			var ret=node.nodeName;
 			if(node.nodeName==="part"){
 				ret+="("+node.textContent+")";
+			}else if(node.nodeName==="img" || node.nodeName==="video"){
+				ret+="("+node.getAttribute("src")+")";
 			}else if(node.nodeName==="box"){
 				ret+="(";
 				var c=node.childNodes;

@@ -30,17 +30,13 @@
     <part style="color:#ff0000;font-size:120px">1998年</part>
     <part type="right" x="100" y="120">完成</part>
   </box>
-  <part style="font-size:160px">Funge</part>
-  <box>
-    <part x="0" y="-120" style="color:#6699ff">Unefunge</part>
-    <part x="0" y="120" style="color:#ff6633">Trefunge</part>
-  </box>
 -->
   <box>
     <delete-all type="turn-right"/>
-    <part style="color:#ff0000;font-size:180px" fixlevel="2">Befunge</part>
+    <part style="color:#ff0000;font-size:180px" fixlevel="10">Befunge</part>
   </box>
-  <part fixlevel="2">とは?</part>
+  <part fixlevel="10">とは?</part>
+  <!--
   <box>
     <part>唯一の資料</part>
     <part x="0" y="100" style="font-size:60px">http://quadium.net/funge/spec98.html</part>
@@ -74,37 +70,75 @@ ss.publish.transport.use('redis');
   <part>ワープ</part>
   <part type="right" style="font-size:120px">異次元</part>
   <delete-all type="slide-left"/>
-
-  <part>クリックで次に進む</part>
-  <part>右クリックで文字を消す</part>
-  <part style="color:#000000;font-size:200px">キー操作</part>
-  <part>Zキーで通常モード</part>
-  <part>Xキーでドラッグモード</part>
-  <part style="font-size:80px">→既存の文字を動かせる</part>
-  
+  -->
+  <part fixlevel="2">一文字一命令</part>
+  <box>
+    <part style="font-size:80px;font-weight:bold;color:red">Brainfuck</part>
+    <part x="30" y="80" style="font-size:80px">を彷彿とさせる</part>
+  </box>
+  <part style="font-size:34px;font-family:monospace">+++++++++[&gt;+++++++&gt;+++++++++++&gt;+++++++&gt;++&lt;&lt;&lt;]&gt;.+++++.&gt;.++++++++++++++++++.&gt;.----.++++++++.&gt;...</part>
+  <part style="color:red;font-size:150px">→</part>
+  <delete-all/>
+  <part style="font-size:60px">2次元的にプログラムを記述</part>
+  <part style="font-size:32px;font-family:monospace;white-space:pre">
+v    v &lt;
+0v     "#  &lt;
+     " l
+&gt; "!dlroW"v
+     e "  "
+     H
+     "&gt;   ,^
+     :    "
+ &gt;  :&gt;|^  &lt;
+      @
+  </part>
+  <part style="color:red;font-size:70px">Hello, world!</part>
+  <part style="font-size:60px;font-family:monospace">&lt; ^ &gt; v</part>
+  <part style="font-size:60px">プログラムカーソルの進行方向を変える</part>
+  <box>
+    <part style="color:blue">&#x2194;</part>
+    <part style="color:blue">&#x2195;</part>
+  </box>
+  <video src="media/loop.webm"/>
+  <video src="media/bfloop.webm"/>
+  <box>
+    <part>まさに</part>
+    <part x="30" y="100" style="color:red;font-size:200px;font-weight:bold">ループ</part>
+  </box>
+  <part fixlevel="3" style="font-size:150px;color:blue">二次元</part>
+  <delete-all level="2" type="slide-right"/>
+  <part>スタック型</part>
   <style>
-    <p name="color">#000000</p>
+    <p name="font-size">60px</p>
+  </style>
+  <part>・数字をスタックに積む命令</part>
+  <part>・文字列を積む命令</part>
+  <part>・四則演算</part>
+  <part>・入出力</part>
+  <part>・スタック操作</part>
+  <box>
+    <delete-all type="turn-left"/>
+    <part style="color:red">条件分岐</part>
+  </box>
+  <part style="font-family:monospace">_    East-West If</part>
+  <part style="font-family:monospace">|    North-South If</part>
+
+  <style>
+    <p name="font-size">100px</p>
   </style>
   <box>
-    <delete-all type="turn-right"/>
-    <part style="color:#CC0000;font-family:fantasy">ICT Challenge+R</part>
-    <part x="0" y="120">後に追加された</part>
-    <part type="right" style="font-size:200px;color:#0000FF" x="100" y="240">新機能</part>
-    <part x="200" y="440">の紹介</part>
+    <delete-all level="3" type="slide-right"/>
+    <part style="font-size:160px">Funge</part>
   </box>
   <box>
-    <part type="left" x="-100" y="-100">複数パーツ</part>
-    <part type="right" x="0" y="20" style="font-size:200px">同時表示</part>
+    <part x="0" y="-120" style="color:#6699ff">Unefunge</part>
+    <part x="0" y="120" style="color:#ff6633">Trefunge</part>
   </box>
-  <part>シーン初期化</part>
-  <delete-all type="turn-left"/>
-  <box>
-    <part x="-200" y="-200">左下の</part>
-    <part style="font-size:200px;color:#FF0000" x="-120" y="-100">アイコン</part>
-    <part type="right" x="20" y="100" style="font-size:80px">→状況をわかりやすく表示</part>
-  </box>
-  <box x="100" y="100">
-    <delete-all type="slide-up" />
-    <part style="font-size:400px;color:#000000" x="250" y="150">終</part>
-  </box>
+  <part style="color:#ff6633">3次元</part>
+  <part style="color:#6699ff">1次元</part>
+  <img src="media/tredit.png" width="600" height="400"/>
+  <delete-all level="10" type="img-slide-left" duration="2">
+    <img src="media/chrome.png"/>
+  </delete-all>
+  <part style="font-family:fantasy">ONLINE</part>
 </parts>
