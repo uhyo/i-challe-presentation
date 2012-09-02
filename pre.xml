@@ -78,6 +78,7 @@ ss.publish.transport.use('redis');
   </box>
   <part style="font-size:34px;font-family:monospace">+++++++++[&gt;+++++++&gt;+++++++++++&gt;+++++++&gt;++&lt;&lt;&lt;]&gt;.+++++.&gt;.++++++++++++++++++.&gt;.----.++++++++.&gt;...</part>
   <part style="color:red;font-size:150px">→</part>
+  <!--
   <delete-all/>
   <part style="font-size:60px">2次元的にプログラムを記述</part>
   <part style="font-size:32px;font-family:monospace;white-space:pre">
@@ -137,8 +138,75 @@ v    v &lt;
   <part style="color:#ff6633">3次元</part>
   <part style="color:#6699ff">1次元</part>
   <img src="media/tredit.png" width="600" height="400"/>
+  -->
   <delete-all level="10" type="img-slide-left" duration="2">
     <img src="media/chrome.png"/>
   </delete-all>
+  <!--
   <part style="font-family:fantasy">ONLINE</part>
+  <part style="font-size:150px">node.js</part>
+  <part style="color:red">JavaScript</part>
+  <part>socket.io</part>
+  <part style="font-size:130px;color:blue">WebSocket</part>
+  <part>双方向リアルタイム通信</part>
+  <part>ブラウザから利用可能</part>
+  <part style="color:red;font-size:120px" fixlevel="2">JavaScript</part>
+
+  <box>
+    <delete-all type="slide-down"/>
+    <part type="left" fixlevel="2">クライアント</part>
+    <part x="300" y="100" fixlevel="2">サーバー</part>
+  </box>
+  <part style="color:red;font-size:130px" fixlevel="2">同じ言語</part>
+  <part style="font-size:80px">クライアント側コード</part>
+  <part style="font-size:80px">サーバー側コード</part>
+  <part style="font-size:350px">&#x2716;</part>
+  <delete-all type="slide-right"/>
+  <part style="font-size:150px">共有</part>
+  <part style="border:3px solid #333333;padding:3px;font-size:70px">共通エンジン</part>
+  <part style="border:3px solid #333333;padding:3px;font-size:60px">クライアントモジュール</part>
+  <part style="border:3px solid #333333;padding:3px;font-size:60px">サーバー側モジュール</part>
+  <part style="color:red">→クライアント側</part>
+  <part style="color:red">→サーバー側</part>
+  <part style="border:3px solid currentColor;padding:5px;font-size:80px;color:red">ゲームスクリプト</part>
+  <part style="color:red">&#x21b3;ブラウザ単独</part>
+  <part style="font-size:120px">一人用</part>
+  <part style="color:#00aa00">デバッグ</part>
+  <delete-all type="turn-right" level="2"/>
+-->
+  <part style="font-size:120px">イベント駆動</part>
+  <part style="border:3px solid #333333;padding:3px;font-size:70px">エンジン</part>
+  <part style="border:3px solid #333333;padding:3px;font-size:60px">obj</part>
+  <part style="border:3px solid #333333;padding:3px;font-size:60px">obj</part>
+  <part style="color:blue">↓</part>
+  <part style="color:blue">↓</part>
+  <part style="color:blue">&#x2194;</part>
+  <part style="border:3px solid currentColor;color:blue;padding:3px;font-size:60px">ユーザー</part>
+  <part style="color:blue">↑</part>
+  <part style="color:red;font-size:60px">イベントのみWebSocketでやり取り</part>
+
+  <part style="font-size:120px;font-family:fantasy" fixlevel="3">Befunge ONLINE</part>
+  <part style="font-size:70px">・複数人協力シューティングゲーム</part>
+  <part style="font-size:70px">・トランプの「スピード」</part>
+  <delete-all type="img-slide-up" level="2" duration="1.5">
+    <img src="media/firefox.png"/>
+  </delete-all>
+  <part>共有フィールド(80x25)</part>
+  <part>カーソル2つ</part>
+  <part style="font-size:120px">お題</part>
+  <part style="font-size:150px;color:blue">実演</part>
+  <part>（一人用）</part>
+  <delete-all type="img-slide-right" duraiton="1" level="3">
+    <img src="media/opera.png"/>
+  </delete-all>
+  <part>シューティング</part>
+  <box>
+    <img x="-400" y="-100" width="1200" height="788" src="media/andon.jpg"/>
+    <part style="color:white;font-size:110px">63rd 北高祭</part>
+  </box>
+  <part style="color:white">先行公開</part>
+  <part style="font-size:90px;font-family:sans-serif;color:white;text-shadow:3px 3px #999999">8人くらいで敵を制圧</part>
+  <delete-all type="slide-down"/>
+  <part>スピード</part>
+  <part style="color:red;font-size:120px">一人スピード</part>
 </parts>

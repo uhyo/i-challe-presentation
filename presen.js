@@ -42,7 +42,8 @@ Presen.prototype={
 		document.addEventListener('mousemove',mmv.bind(this),false);
 		document.addEventListener('mouseup',mu.bind(this),false);
 		//document.addEventListener('keydown',kd.bind(this),false);
-		document.addEventListener('keydown',function(e){
+		document.addEventListener('keypress',function(e){
+			//keypress for Opera
 			kd.call(t,e);
 		},false);
 		document.addEventListener('contextmenu',cx.bind(this),false);
@@ -106,15 +107,15 @@ Presen.prototype={
 		function kd(e){
 			if(this.mode=="input" || this.mode=="style")return;
 			switch(e.keyCode){
-			case 0x5A://Z
+				case 0x5A:case 0x7A://Z
 				this.modechange("step");
 				e.preventDefault();
 				break;
-			case 0x58://X
+			case 0x58:case 0x78://X
 				this.modechange("drag");
 				e.preventDefault();
 				break;
-			case 0x43://C
+			case 0x43:case 0x63://C
 				this.modechange("delete");
 				e.preventDefault();
 				break;
@@ -122,11 +123,11 @@ Presen.prototype={
 				this.modechange("link");
 				e.preventDefault();
 				break;
-			case 0x41://A
+			case 0x41:case 0x61://A
 				this.modechange("input");
 				e.preventDefault();
 				break;
-			case 0x53://S
+			case 0x53:case 0x73://S
 				this.modechange("style");
 				e.preventDefault();
 				break;
@@ -156,6 +157,8 @@ Presen.prototype={
 				}else if(node.nodeName==="img"){
 					part=document.createElement("img");
 					part.src=node.getAttribute("src");
+					if(node.hasAttribute("width"))part.width=parseInt(node.getAttribute("width"));
+					if(node.hasAttribute("height"))part.height=parseInt(node.getAttribute("height"));
 				}else if(node.nodeName==="box"){
 					part=document.createElement("div");
 					part.style.width=document.documentElement.clientWidth+"px";
@@ -317,7 +320,7 @@ Presen.prototype={
 					part.style.overflow="hidden";
 					part.style.whiteSpace="nowrap";
 					//画像
-					setse(part.style,"transition","width "+duration+" linear, height "+duration+" linear, left "+duration+" linear, top "+duration+" linear");
+					setse(part.style,"transition","width "+duration+" linear, height "+duration+" linear, left "+duration+" linear, top "+duration+" linear, left "+duration+" linear, top "+duration+" linear");
 					//画像を載せたdivを生成する
 					part2=document.createElement("div");
 					part2.style.position="absolute";
@@ -364,11 +367,11 @@ Presen.prototype={
 								i.style.left=x+"px";
 								i.style.top=Math.floor(-h/2)+"px";
 								part2.appendChild(i);
-								x+=x+delta;
+								x+=w+delta;
 							}
 							//はじめの位置
 							if(type==="img-slide-up"){
-								part2.style.top=document.documentElement.clientHeight;
+								part2.style.top=document.documentElement.clientHeight+"px";
 								part2.style.left="0px";
 							}else{
 								part2.style.top="0px";
@@ -428,7 +431,7 @@ Presen.prototype={
 						break;
 					case "img-slide-up":
 						part2.style.top="0px";
-						part.style.heght="0px";
+						part.style.height="0px";
 						break;
 					case "img-slide-down":
 						part2.style.top=document.documentElement.clientHeight+"px";
