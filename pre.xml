@@ -5,8 +5,13 @@
     <p name="color">#FF0000</p>
     <p name="font-family">serif</p>
   </style>
-  <!--
-  <part type="left">Befunge</part>
+  <box>
+    <img x="-200" y="-100" width="600" height="432" src="media/satsukita.jpg"/>
+    <part x="-200" y="-200" style="color:black;font-size:120px;text-shadow:2px 2px 3px rgba(0,0,0,0.4)">札幌北高校</part>
+  </box>
+  <part style="color:#00aa00">JavaScript</part>
+  <part fixlevel="2" style="font-size:70px;color:black">http://github.com/uhyo</part>
+  <part type="left" fixlevel="3">Befunge</part>
   <part type="right" style="color:#0000ff;font-family:fantasy;">ONLINE</part>
   <style>
     <p name="color">#000000</p>
@@ -15,28 +20,17 @@
   <part style="font-size:150px">node.js</part>
   <part style="color:#ff0000" type="left">Socket.IO</part>
   <part style="color:#0000ff;font-size:180px">よくある</part>
--->
   <!-- Befungeの紹介 -->
   <style>
     <p name="color">#000000</p>
   </style>
-  <!--
-  <box>
-    <delete-all type="slide-up"/>
-    <part style="color:#ff0000;font-size:180px">Befunge</part>
-  </box>
-  <part type="right">とは?</part>
+  <delete-all type="slide-up"/>
+  <part type="right" fixlevel="3">とは?</part>
   <box>
     <part style="color:#ff0000;font-size:120px">1998年</part>
     <part type="right" x="100" y="120">完成</part>
   </box>
--->
-  <box>
-    <delete-all type="turn-right"/>
-    <part style="color:#ff0000;font-size:180px" fixlevel="10">Befunge</part>
-  </box>
-  <part fixlevel="10">とは?</part>
-  <!--
+  <delete-all type="turn-right"/>
   <box>
     <part>唯一の資料</part>
     <part x="0" y="100" style="font-size:60px">http://quadium.net/funge/spec98.html</part>
@@ -47,7 +41,7 @@
     <part type="left" style="font-size:200px;color:red">二次元</part>
     <part x="200" y="160">プログラミング言語</part>
   </box>
-  <part style="font-family:monospace;font-size:28px;white-space:pre">//JavaScript
+  <part style="font-family:monospace;font-size:28px;white-space:pre;background-color:rgba(255,255,255,0.8)">//JavaScript
 ss.http.router.on('/',function(req,res){
 	res.serveClient('main');
 });
@@ -65,12 +59,11 @@ ss.publish.transport.use('redis');
   <part style="color:red;font-size:150px">↓</part>
 
   <part>一次元</part>
-  <video loop="yes" src="media/loop.webm"/>
-  <img src="media/lkh_arrow.png"/>
+  <video loop="yes" src="media/loop.webm" width="594" height="348" />
+  <img src="media/lkh_arrow.png" width="348" height="348" />
   <part>ワープ</part>
-  <part type="right" style="font-size:120px">異次元</part>
+  <part type="right" style="font-size:120px;color:blue;font-weight:bold">異次元</part>
   <delete-all type="slide-left"/>
-  -->
   <part fixlevel="2">一文字一命令</part>
   <box>
     <part style="font-size:80px;font-weight:bold;color:red">Brainfuck</part>
@@ -78,10 +71,9 @@ ss.publish.transport.use('redis');
   </box>
   <part style="font-size:34px;font-family:monospace">+++++++++[&gt;+++++++&gt;+++++++++++&gt;+++++++&gt;++&lt;&lt;&lt;]&gt;.+++++.&gt;.++++++++++++++++++.&gt;.----.++++++++.&gt;...</part>
   <part style="color:red;font-size:150px">→</part>
-  <!--
   <delete-all/>
   <part style="font-size:60px">2次元的にプログラムを記述</part>
-  <part style="font-size:32px;font-family:monospace;white-space:pre">
+  <part style="font-size:32px;font-family:monospace;white-space:pre;background-color:rgba(255,255,255,0.8)">
 v    v &lt;
 0v     "#  &lt;
      " l
@@ -100,8 +92,8 @@ v    v &lt;
     <part style="color:blue">&#x2194;</part>
     <part style="color:blue">&#x2195;</part>
   </box>
-  <video src="media/loop.webm"/>
-  <video src="media/bfloop.webm"/>
+  <video loop="yes" src="media/loop.webm" width="594" height="348" />
+  <video src="media/bfloop.webm" width="288" height="452"/>
   <box>
     <part>まさに</part>
     <part x="30" y="100" style="color:red;font-size:200px;font-weight:bold">ループ</part>
@@ -138,11 +130,9 @@ v    v &lt;
   <part style="color:#ff6633">3次元</part>
   <part style="color:#6699ff">1次元</part>
   <img src="media/tredit.png" width="600" height="400"/>
-  -->
   <delete-all level="10" type="img-slide-left" duration="2">
     <img src="media/chrome.png"/>
   </delete-all>
-  <!--
   <part style="font-family:fantasy">ONLINE</part>
   <part style="font-size:150px">node.js</part>
   <part style="color:red">JavaScript</part>
@@ -173,7 +163,6 @@ v    v &lt;
   <part style="font-size:120px">一人用</part>
   <part style="color:#00aa00">デバッグ</part>
   <delete-all type="turn-right" level="2"/>
--->
   <part style="font-size:120px">イベント駆動</part>
   <part style="border:3px solid #333333;padding:3px;font-size:70px">エンジン</part>
   <part style="border:3px solid #333333;padding:3px;font-size:60px">obj</part>
@@ -184,6 +173,7 @@ v    v &lt;
   <part style="border:3px solid currentColor;color:blue;padding:3px;font-size:60px">ユーザー</part>
   <part style="color:blue">↑</part>
   <part style="color:red;font-size:60px">イベントのみWebSocketでやり取り</part>
+  <delete-all level="2"/>
 
   <part style="font-size:120px;font-family:fantasy" fixlevel="3">Befunge ONLINE</part>
   <part style="font-size:70px">・複数人協力シューティングゲーム</part>
