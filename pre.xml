@@ -9,8 +9,14 @@
     <img x="-200" y="-100" width="600" height="432" src="media/satsukita.jpg"/>
     <part x="-200" y="-200" style="color:black;font-size:120px;text-shadow:2px 2px 3px rgba(0,0,0,0.4)">札幌北高校</part>
   </box>
-  <part style="color:#00aa00">JavaScript</part>
+  <part style="color:#00aa00" fixlevel="2">JavaScript</part>
+  <img x="100" y="100" src="media/html5step.png" style="z-index:10"/>
+  <img x="100" y="100" src="media/background.png"/>
+  <img x="100" y="100" src="media/dosStudio.png" style="z-index:2"/>
+  <part style="font-size:70px;color:blue">http://html5step.bonprosoft.com/</part>
   <part fixlevel="2" style="font-size:70px;color:black">http://github.com/uhyo</part>
+  <delete-all type="fade"/>
+
   <part type="left" fixlevel="4">Befunge</part>
   <part type="right" fixlevel="3" style="color:#0000ff;font-family:fantasy;">ONLINE</part>
   <style>
@@ -33,6 +39,7 @@
   <part style="color:red;font-size:130px" fixlevel="2">同じ言語</part>
   <part style="font-size:80px">クライアント側コード</part>
   <part style="font-size:80px">サーバー側コード</part>
+  <part style="font-size:80px;color:blue">&#x2195;</part>
   <part style="font-size:350px">&#x2716;</part>
   <delete-all type="slide-right"/>
   <part style="font-size:150px">共有</part>
@@ -69,6 +76,7 @@
   <part type="right" fixlevel="3">とは?</part>
   <part style="color:blue;font-size:160px" type="left">難解</part>
   <part>プログラミング言語</part>
+  <!--
   <box>
     <part style="color:#ff0000;font-size:120px">1998年</part>
     <part type="right" x="100" y="120">完成</part>
@@ -79,7 +87,7 @@
     <part x="0" y="100" style="font-size:60px">http://quadium.net/funge/spec98.html</part>
   </box>
   <part type="right" style="color:#0000ff">公式</part>
-
+-->
   <box>
     <part type="left" style="font-size:200px;color:red">二次元</part>
     <part x="200" y="160">プログラミング言語</part>
@@ -116,7 +124,7 @@ ss.publish.transport.use('redis');
   <part style="color:red;font-size:150px">→</part>
   <delete-all/>
   <part style="font-size:60px">2次元的にプログラムを記述</part>
-  <part style="font-size:32px;font-family:monospace;white-space:pre;background-color:rgba(255,255,255,0.8)">
+  <part style="font-size:42px;font-family:monospace;white-space:pre;background-color:rgba(255,255,255,0.8)">
 v    v &lt;
 0v     "#  &lt;
      " l
@@ -131,10 +139,6 @@ v    v &lt;
   <part style="color:red;font-size:70px">Hello, world!</part>
   <part style="font-size:60px;font-family:monospace">&lt; ^ &gt; v</part>
   <part style="font-size:60px">プログラムカーソルの進行方向を変える</part>
-  <box>
-    <part style="color:blue">&#x2194;</part>
-    <part style="color:blue">&#x2195;</part>
-  </box>
   <video loop="yes" src="media/loop.webm" width="594" height="348" />
   <video src="media/bfloop.webm" width="288" height="452"/>
   <box>
@@ -143,15 +147,9 @@ v    v &lt;
   </box>
   <part fixlevel="3" style="font-size:150px;color:blue">二次元</part>
   <delete-all level="2" type="slide-right"/>
-  <part>スタック型</part>
   <style>
     <p name="font-size">60px</p>
   </style>
-  <part>・数字をスタックに積む命令</part>
-  <part>・文字列を積む命令</part>
-  <part>・四則演算</part>
-  <part>・入出力</part>
-  <part>・スタック操作</part>
   <box>
     <delete-all type="turn-left"/>
     <part style="color:red">条件分岐</part>
