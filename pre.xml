@@ -11,8 +11,8 @@
   </box>
   <part style="color:#00aa00">JavaScript</part>
   <part fixlevel="2" style="font-size:70px;color:black">http://github.com/uhyo</part>
-  <part type="left" fixlevel="3">Befunge</part>
-  <part type="right" style="color:#0000ff;font-family:fantasy;">ONLINE</part>
+  <part type="left" fixlevel="4">Befunge</part>
+  <part type="right" fixlevel="3" style="color:#0000ff;font-family:fantasy;">ONLINE</part>
   <style>
     <p name="color">#000000</p>
   </style>
@@ -20,12 +20,55 @@
   <part style="font-size:150px">node.js</part>
   <part style="color:#ff0000" type="left">Socket.IO</part>
   <part style="color:#0000ff;font-size:180px">よくある</part>
+  <part style="font-size:130px;color:blue">WebSocket</part>
+  <part>双方向リアルタイム通信</part>
+  <part>ブラウザから利用可能</part>
+  <part style="color:red;font-size:120px;background-color:rgba(255,255,255,0.8)" fixlevel="2">JavaScript</part>
+
+  <box>
+    <delete-all type="slide-down"/>
+    <part type="left" fixlevel="2">クライアント</part>
+    <part x="300" y="100" fixlevel="2">サーバー</part>
+  </box>
+  <part style="color:red;font-size:130px" fixlevel="2">同じ言語</part>
+  <part style="font-size:80px">クライアント側コード</part>
+  <part style="font-size:80px">サーバー側コード</part>
+  <part style="font-size:350px">&#x2716;</part>
+  <delete-all type="slide-right"/>
+  <part style="font-size:150px">共有</part>
+  <part>ゲームエンジン</part>
+  <part style="border:3px solid #333333;padding:3px;font-size:70px">共通エンジン</part>
+  <part style="border:3px solid #333333;padding:3px;font-size:60px">クライアントモジュール</part>
+  <part style="border:3px solid #333333;padding:3px;font-size:60px">サーバー側モジュール</part>
+  <part style="color:red">→クライアント側</part>
+  <part style="color:red">→サーバー側</part>
+  <part style="border:3px solid currentColor;padding:5px;font-size:80px;color:red">ゲームスクリプト</part>
+  <part style="color:red">&#x21b3;ブラウザ単独</part>
+  <part style="font-size:120px">一人用</part>
+  <part style="color:#00aa00">デバッグ</part>
+  <delete-all type="turn-right" level="2"/>
+  <part style="font-size:120px">イベント駆動</part>
+  <part style="border:3px solid #333333;padding:3px;font-size:70px">エンジン</part>
+  <part style="border:3px solid #333333;padding:3px;font-size:60px">obj</part>
+  <part style="border:3px solid #333333;padding:3px;font-size:60px">obj</part>
+  <part style="color:blue">↓</part>
+  <part style="color:blue">↓</part>
+  <part style="color:blue">&#x2194;</part>
+  <part style="border:3px solid currentColor;color:blue;padding:3px;font-size:60px">ユーザー</part>
+  <part style="color:blue">↑</part>
+  <part style="color:red;font-size:60px">イベントのみWebSocketでやり取り</part>
+  <part style="font-size:60px">EventEmitter &#x00a9;2012 Oliver Caldwell</part>
+
   <!-- Befungeの紹介 -->
   <style>
     <p name="color">#000000</p>
   </style>
-  <delete-all type="slide-up"/>
+  <delete-all level="3" type="img-slide-left" duration="2">
+    <img src="media/chrome.png"/>
+  </delete-all>
   <part type="right" fixlevel="3">とは?</part>
+  <part style="color:blue;font-size:160px" type="left">難解</part>
+  <part>プログラミング言語</part>
   <box>
     <part style="color:#ff0000;font-size:120px">1998年</part>
     <part type="right" x="100" y="120">完成</part>
@@ -130,50 +173,7 @@ v    v &lt;
   <part style="color:#ff6633">3次元</part>
   <part style="color:#6699ff">1次元</part>
   <img src="media/tredit.png" width="600" height="400"/>
-  <delete-all level="10" type="img-slide-left" duration="2">
-    <img src="media/chrome.png"/>
-  </delete-all>
-  <part style="font-family:fantasy">ONLINE</part>
-  <part style="font-size:150px">node.js</part>
-  <part style="color:red">JavaScript</part>
-  <part>socket.io</part>
-  <part style="font-size:130px;color:blue">WebSocket</part>
-  <part>双方向リアルタイム通信</part>
-  <part>ブラウザから利用可能</part>
-  <part style="color:red;font-size:120px" fixlevel="2">JavaScript</part>
-
-  <box>
-    <delete-all type="slide-down"/>
-    <part type="left" fixlevel="2">クライアント</part>
-    <part x="300" y="100" fixlevel="2">サーバー</part>
-  </box>
-  <part style="color:red;font-size:130px" fixlevel="2">同じ言語</part>
-  <part style="font-size:80px">クライアント側コード</part>
-  <part style="font-size:80px">サーバー側コード</part>
-  <part style="font-size:350px">&#x2716;</part>
-  <delete-all type="slide-right"/>
-  <part style="font-size:150px">共有</part>
-  <part style="border:3px solid #333333;padding:3px;font-size:70px">共通エンジン</part>
-  <part style="border:3px solid #333333;padding:3px;font-size:60px">クライアントモジュール</part>
-  <part style="border:3px solid #333333;padding:3px;font-size:60px">サーバー側モジュール</part>
-  <part style="color:red">→クライアント側</part>
-  <part style="color:red">→サーバー側</part>
-  <part style="border:3px solid currentColor;padding:5px;font-size:80px;color:red">ゲームスクリプト</part>
-  <part style="color:red">&#x21b3;ブラウザ単独</part>
-  <part style="font-size:120px">一人用</part>
-  <part style="color:#00aa00">デバッグ</part>
-  <delete-all type="turn-right" level="2"/>
-  <part style="font-size:120px">イベント駆動</part>
-  <part style="border:3px solid #333333;padding:3px;font-size:70px">エンジン</part>
-  <part style="border:3px solid #333333;padding:3px;font-size:60px">obj</part>
-  <part style="border:3px solid #333333;padding:3px;font-size:60px">obj</part>
-  <part style="color:blue">↓</part>
-  <part style="color:blue">↓</part>
-  <part style="color:blue">&#x2194;</part>
-  <part style="border:3px solid currentColor;color:blue;padding:3px;font-size:60px">ユーザー</part>
-  <part style="color:blue">↑</part>
-  <part style="color:red;font-size:60px">イベントのみWebSocketでやり取り</part>
-  <delete-all level="2"/>
+  <delete-all type="slide-left" level="4"/>
 
   <part style="font-size:120px;font-family:fantasy" fixlevel="3">Befunge ONLINE</part>
   <part style="font-size:70px">・複数人協力シューティングゲーム</part>
@@ -199,4 +199,29 @@ v    v &lt;
   <delete-all type="slide-down"/>
   <part>スピード</part>
   <part style="color:red;font-size:120px">一人スピード</part>
+  <!-- 結論 -->
+  <box>
+    <delete-all type="turn-left"/>
+    <part style="font-size:200px;font-size:bold" fixlevel="2">結論</part>
+  </box>
+  <part style="color:red">Befunge</part>
+  <part style="color:blue;font-size:130px">二次元</part>
+  <part style="font-size:90px">コードゴルフ</part>
+  <part style="font-size:90px">（コードの短さを競う）</part>
+  <box>
+    <part>コードの</part>
+    <part x="100" y="100" style="font-size:140px;color:red" type="right">面積</part>
+  </box>
+  <part style="font-size:80px">（コードを全て含む最小の矩形の面積）</part>
+  <box>
+    <delete-all type="fade"/>
+    <part x="-180" y="-100" style="font-size:130px;color:red">Befungeの</part>
+    <part style="font-size:190px" x="40" y="50">魅力</part>
+  </box>
+  <box>
+    <delete-all type="fade"/>
+    <part x="-160" y="-100" style="font-size:200px">二次元</part>
+    <part x="220" y="100" style="font-size:140px">こそ</part>
+  </box>
+  <part style="font-size:300px;color:red">至高</part>
 </parts>
