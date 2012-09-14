@@ -119,7 +119,7 @@ Presen.prototype={
 				this.modechange("delete");
 				e.preventDefault();
 				break;
-			case 0x56://V
+			case 0x56:case 0x76://V
 				this.modechange("link");
 				e.preventDefault();
 				break;
