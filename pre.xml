@@ -1,212 +1,168 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <parts>
   <style>
-    <p name="font-size">100px</p>
-    <p name="color">#FF0000</p>
+    <p name="font-size">40px</p>
+    <p name="color">#6b9e13</p>
+    <p name="font-family">sans-serif</p>
+  </style>
+  <box>
+    <part/>
+    <img src="media/back1.png" x="0" y="0" fixlevel="2" />
+    <part x="40" y="200" style="font-size:55px">スパイのための情報隠匿ツール</part>
+    <part x="230" y="380" style="font-size:32px">東京大学理科一類　鈴木僚太</part>
+  </box>
+  <set>
+    <delete-all/>
+    <part style="font-size:80px" fixlevel="2">自己紹介</part>
+  </set>
+  <if title="ネット人狼の話する？">
+    <part style="font-size:55px">・ネット人狼</part>
+    <box>
+      <part/>
+      <part x="30" y="0" style="font-size:50px;color:black;font-family:serif;font-weight:bold">月下人狼</part>
+      <part x="0" y="60" style="font-size:28px;color:black;font-family:serif">http://jinrou.uhyohyo.net/</part>
+    </box>
+    <box>
+      <part/>
+      <part x="0" y="0">・WebSocketでリアルタイムチャット</part>
+      <part x="0" y="40">・量子人狼を初めてオンライン化</part>
+    </box>
+    <delete-all/>
+  </if>
+  <part style="font-size:55px">・唯一のあいちゃれ皆勤</part>
+  <box>
+    <part/>
+    <part x="0" y="0">・あいちゃれ2011</part>
+    <part x="0" y="50" style="color:red;font-family:serif">JavaScript→Brainfuck</part>
+  </box>
+  <box>
+    <part/>
+    <part x="0" y="0">・あいちゃれ2012</part>
+    <part x="0" y="50" style="color:blue;font-family:serif;font-weight:bold">Befunge ONLINE</part>
+  </box>
+  <part level="2">Brainfucker?</part>
+  <set>
+    <delete-all type="slide-right" />
+    <img src="media/human.png" width="125" height="176" type="right"/>
+  </set>
+  <img src="media/fuckingarrow.png" width="120" height="120" />
+  <img src="media/fuckingbrain.png" width="160" height="160" />
+  <part style="font-size:35px;font-family:serif">Brainfucked</part>
+  <box>
+    <part/>
+    <img x="0" y="0" width="125" height="176" src="media/human.png"/>
+    <part x="20" y="-40" style="font-size:35px;font-family:serif">Brainfucker</part>
+  </box>
+  <part style="color:red;font-size:80px">←</part>
+  <style>
+    <p name="font-size">40px</p>
+    <p name="color">black</p>
     <p name="font-family">serif</p>
   </style>
-  <!--
-  <part type="left">Befunge</part>
-  <part type="right" style="color:#0000ff;font-family:fantasy;">ONLINE</part>
+  <set>
+    <delete-all level="2" type="turn-right" duration="0.3" />
+    <part x="100" y="60" type="left" style="color:red;font-size:120px">スパイ</part>
+    <part x="200" y="180" type="right" style="font-size:80px">のための情報隠匿ツール</part>
+  </set>
+  <part style="color:blue;font-size:120px">←?</part>
+  <part style="font-size:80px" type="left">難解言語</part>
+  <part style="font-size:130px;color:red" type="right" fixlevel="3">Whitespace</part>
+  <delete-all type="img-slide-left" duration="1.2">
+    <img src="media/chrome.png" />
+  </delete-all>
+  <part>3種類の文字のみ使用</part>
+  <box>
+    <part x="0" y="0" style="font-family:sans-serif">・</part>
+    <part x="0" y="60" style="font-family:sans-serif">・</part>
+    <part x="0" y="120" style="font-family:sans-serif">・</part>
+  </box>
+  <part style="color:blue">↙半角スペース</part>
+  <part style="color:blue">←タブ</part>
+  <part style="color:blue">↖改行</part>
+  <part style="color:red">Hello, world!</part>
+  <part style="display:block;width:350px;height:350px;border:4px dashed #999999;background-color:white" fixlevel="2" />
+  <delete-all type="slide-right" />
+  <part style="color:green;font-family:sans-serif">スタック指向</part>
+  <part style="color:green;font-family:sans-serif">ラベル/サブルーチン</part>
+  <part style="color:green;font-family:sans-serif">ヒープ領域</part>
+  <part style="color:#6b9e13;font-family:sans-serif;font-size:70px">高機能</part>
+  <set>
+    <delete-all type="turn-left" level="2" />
+    <part style="color:blue;font-size:55px">FizzBuzz</part>
+  </set>
+  <part style="display:block;width:400px;height:400px;border:4px dashed #999999;background-color:white" fixlevel="2" />
   <style>
-    <p name="color">#000000</p>
+    <p name="font-family">sans-serif</p>
+    <p name="color">#6b9e13</p>
   </style>
-  <part style="color:#000000">&#x2196;</part>
-  <part style="font-size:150px">node.js</part>
-  <part style="color:#ff0000" type="left">Socket.IO</part>
-  <part style="color:#0000ff;font-size:180px">よくある</part>
--->
-  <!-- Befungeの紹介 -->
-  <style>
-    <p name="color">#000000</p>
-  </style>
-  <!--
-  <box>
-    <delete-all type="slide-up"/>
-    <part style="color:#ff0000;font-size:180px">Befunge</part>
-  </box>
-  <part type="right">とは?</part>
-  <box>
-    <part style="color:#ff0000;font-size:120px">1998年</part>
-    <part type="right" x="100" y="120">完成</part>
-  </box>
--->
-  <box>
-    <delete-all type="turn-right"/>
-    <part style="color:#ff0000;font-size:180px" fixlevel="10">Befunge</part>
-  </box>
-  <part fixlevel="10">とは?</part>
-  <!--
-  <box>
-    <part>唯一の資料</part>
-    <part x="0" y="100" style="font-size:60px">http://quadium.net/funge/spec98.html</part>
-  </box>
-  <part type="right" style="color:#0000ff">公式</part>
-
-  <box>
-    <part type="left" style="font-size:200px;color:red">二次元</part>
-    <part x="200" y="160">プログラミング言語</part>
-  </box>
-  <part style="font-family:monospace;font-size:28px;white-space:pre">//JavaScript
-ss.http.router.on('/',function(req,res){
-	res.serveClient('main');
-});
-
-ss.client.formatters.add(require('ss-coffee'));
-ss.client.formatters.add(require('ss-jade'));
-ss.client.formatters.add(require('ss-stylus'));
-
-ss.client.templateEngine.use(require('ss-clientjade'));
-
-ss.client.set({liveReload: false});
-ss.session.store.use('redis');
-ss.publish.transport.use('redis');
-...</part>
-  <part style="color:red;font-size:150px">↓</part>
-
-  <part>一次元</part>
-  <video loop="yes" src="media/loop.webm"/>
-  <img src="media/lkh_arrow.png"/>
-  <part>ワープ</part>
-  <part type="right" style="font-size:120px">異次元</part>
-  <delete-all type="slide-left"/>
-  -->
-  <part fixlevel="2">一文字一命令</part>
-  <box>
-    <part style="font-size:80px;font-weight:bold;color:red">Brainfuck</part>
-    <part x="30" y="80" style="font-size:80px">を彷彿とさせる</part>
-  </box>
-  <part style="font-size:34px;font-family:monospace">+++++++++[&gt;+++++++&gt;+++++++++++&gt;+++++++&gt;++&lt;&lt;&lt;]&gt;.+++++.&gt;.++++++++++++++++++.&gt;.----.++++++++.&gt;...</part>
-  <part style="color:red;font-size:150px">→</part>
-  <!--
-  <delete-all/>
-  <part style="font-size:60px">2次元的にプログラムを記述</part>
-  <part style="font-size:32px;font-family:monospace;white-space:pre">
-v    v &lt;
-0v     "#  &lt;
-     " l
-&gt; "!dlroW"v
-     e "  "
-     H
-     "&gt;   ,^
-     :    "
- &gt;  :&gt;|^  &lt;
-      @
-  </part>
-  <part style="color:red;font-size:70px">Hello, world!</part>
-  <part style="font-size:60px;font-family:monospace">&lt; ^ &gt; v</part>
-  <part style="font-size:60px">プログラムカーソルの進行方向を変える</part>
-  <box>
-    <part style="color:blue">&#x2194;</part>
-    <part style="color:blue">&#x2195;</part>
-  </box>
-  <video src="media/loop.webm"/>
-  <video src="media/bfloop.webm"/>
-  <box>
-    <part>まさに</part>
-    <part x="30" y="100" style="color:red;font-size:200px;font-weight:bold">ループ</part>
-  </box>
-  <part fixlevel="3" style="font-size:150px;color:blue">二次元</part>
-  <delete-all level="2" type="slide-right"/>
-  <part>スタック型</part>
-  <style>
-    <p name="font-size">60px</p>
-  </style>
-  <part>・数字をスタックに積む命令</part>
-  <part>・文字列を積む命令</part>
-  <part>・四則演算</part>
-  <part>・入出力</part>
-  <part>・スタック操作</part>
-  <box>
-    <delete-all type="turn-left"/>
-    <part style="color:red">条件分岐</part>
-  </box>
-  <part style="font-family:monospace">_    East-West If</part>
-  <part style="font-family:monospace">|    North-South If</part>
-
-  <style>
-    <p name="font-size">100px</p>
-  </style>
-  <box>
-    <delete-all level="3" type="slide-right"/>
-    <part style="font-size:160px">Funge</part>
-  </box>
-  <box>
-    <part x="0" y="-120" style="color:#6699ff">Unefunge</part>
-    <part x="0" y="120" style="color:#ff6633">Trefunge</part>
-  </box>
-  <part style="color:#ff6633">3次元</part>
-  <part style="color:#6699ff">1次元</part>
-  <img src="media/tredit.png" width="600" height="400"/>
-  -->
-  <delete-all level="10" type="img-slide-left" duration="2">
+  <set>
+    <delete-all type="slide-left" level="2" />
+    <part type="slide-right">スパイのための?</part>
+  </set>
+  <part>Whitespace公式サイト http://compsoc.dur.ac.uk/whitespace/</part>
+  <part style="color:black;font-size:36px;font-family:serif">Whitespace is a particularly useful language for spies. Imagine you have a top secret program that you don't want anyone to see. What do you do? Simply print it out and delete the file, ready to type in at a later date. Nobody will know that your blank piece of paper is actually vital computer code!</part>
+  <set>
+    <delete-all level="3" />
+    <img src="media/back1.png" type="slide-right" fixlevel="2" />
+  </set>
+  <part>スパイのための情報隠匿ツール</part>
+  <part style="color:black">情報をWhitespaceコード化して隠そう!!</part>
+  <part style="display:block;width:500px;border:4px dashed #ffe3e3;font-family:monospace;font-size:32px;white-space:pre;background-color:white;color:#555555">for(var i=1;i&lt;=100;i++){
+  if(i%15===0){
+    print("FizzBuzz ");
+  }else if(i%5===0){
+    print("Buzz ");
+  }else if(i%3===0){
+    print("Fizz ");
+  }else{
+    print(i+" ");
+  }
+}
+print("\n");</part>
+  <part style="font-size:100px">+</part>
+  <part style="display:block;width:400px;height:400px;border:4px dashed #999999;background-color:white" fixlevel="2" />
+  <part style="font-size:100px">=?</part>
+  <delete-all type="img-slide-right" level="3" duration="1.5">
     <img src="media/chrome.png"/>
   </delete-all>
-  <!--
-  <part style="font-family:fantasy">ONLINE</part>
-  <part style="font-size:150px">node.js</part>
-  <part style="color:red">JavaScript</part>
-  <part>socket.io</part>
-  <part style="font-size:130px;color:blue">WebSocket</part>
-  <part>双方向リアルタイム通信</part>
-  <part>ブラウザから利用可能</part>
-  <part style="color:red;font-size:120px" fixlevel="2">JavaScript</part>
-
-  <box>
-    <delete-all type="slide-down"/>
-    <part type="left" fixlevel="2">クライアント</part>
-    <part x="300" y="100" fixlevel="2">サーバー</part>
-  </box>
-  <part style="color:red;font-size:130px" fixlevel="2">同じ言語</part>
-  <part style="font-size:80px">クライアント側コード</part>
-  <part style="font-size:80px">サーバー側コード</part>
-  <part style="font-size:350px">&#x2716;</part>
-  <delete-all type="slide-right"/>
-  <part style="font-size:150px">共有</part>
-  <part style="border:3px solid #333333;padding:3px;font-size:70px">共通エンジン</part>
-  <part style="border:3px solid #333333;padding:3px;font-size:60px">クライアントモジュール</part>
-  <part style="border:3px solid #333333;padding:3px;font-size:60px">サーバー側モジュール</part>
-  <part style="color:red">→クライアント側</part>
-  <part style="color:red">→サーバー側</part>
-  <part style="border:3px solid currentColor;padding:5px;font-size:80px;color:red">ゲームスクリプト</part>
-  <part style="color:red">&#x21b3;ブラウザ単独</part>
-  <part style="font-size:120px">一人用</part>
-  <part style="color:#00aa00">デバッグ</part>
-  <delete-all type="turn-right" level="2"/>
--->
-  <part style="font-size:120px">イベント駆動</part>
-  <part style="border:3px solid #333333;padding:3px;font-size:70px">エンジン</part>
-  <part style="border:3px solid #333333;padding:3px;font-size:60px">obj</part>
-  <part style="border:3px solid #333333;padding:3px;font-size:60px">obj</part>
-  <part style="color:blue">↓</part>
-  <part style="color:blue">↓</part>
-  <part style="color:blue">&#x2194;</part>
-  <part style="border:3px solid currentColor;color:blue;padding:3px;font-size:60px">ユーザー</part>
-  <part style="color:blue">↑</part>
-  <part style="color:red;font-size:60px">イベントのみWebSocketでやり取り</part>
-
-  <part style="font-size:120px;font-family:fantasy" fixlevel="3">Befunge ONLINE</part>
-  <part style="font-size:70px">・複数人協力シューティングゲーム</part>
-  <part style="font-size:70px">・トランプの「スピード」</part>
-  <delete-all type="img-slide-up" level="2" duration="1.5">
-    <img src="media/firefox.png"/>
+  <part style="color:red;font-size:120px;font-family:serif">メッセージ</part>
+  <part style="color:black">を隠す</part>
+  <part style="font-size:30px;color:black">wsmessage : 標準入力にメッセージを入力→</part>
+  <part style="font-size:30px;color:black">その内容を出力するWhitespaceプログラムを出力</part>
+  <delete-all type="img-slide-up" duration="1.5">
+    <img src="media/chrome.png"/>
   </delete-all>
-  <part>共有フィールド(80x25)</part>
-  <part>カーソル2つ</part>
-  <part style="font-size:120px">お題</part>
-  <part style="font-size:150px;color:blue">実演</part>
-  <part>（一人用）</part>
-  <delete-all type="img-slide-right" duraiton="1" level="3">
-    <img src="media/opera.png"/>
-  </delete-all>
-  <part>シューティング</part>
-  <box>
-    <img x="-400" y="-100" width="1200" height="788" src="media/andon.jpg"/>
-    <part style="color:white;font-size:110px">63rd 北高祭</part>
-  </box>
-  <part style="color:white">先行公開</part>
-  <part style="font-size:90px;font-family:sans-serif;color:white;text-shadow:3px 3px #999999">8人くらいで敵を制圧</part>
-  <delete-all type="slide-down"/>
-  <part>スピード</part>
-  <part style="color:red;font-size:120px">一人スピード</part>
+  <part style="color:green">Whitespace</part>
+  <part style="font-size:55px;coor:red">高機能</part>
+  <part style="color:red;font-size:130px;font-family:serif">アルゴリズム</part>
+  <part style="color:black;font-family:serif">を隠す</part>
+  <part fixlevel="2">Whitespaceを書こう!!</part>
+  <part>←</part>
+  <part style="display:block;width:300px;height:300px;border:4px dashed #999999;background-color:white" />
+  <set>
+    <delete-all/>
+    <part style="font-size:160px;color:red;font-family:serif" type="left">JavaScriptを</part>
+  </set>
+  <part style="font-size:160px;color:blue;font-family:serif" type="right">Whitespaceに</part>
+  <part style="font-size:200px;color:black;font-family:serif">変換</part>
+  <part style="color:red">＼えっ／</part>
+  <part style="font-size:34px;color:#666666">（参考:あいちゃれ2011「JavaScript→Brainfuck」）</part>
+  <set>
+    <delete-all type="slide-left" fixlevel="2" />
+    <part style="font-size:80px">ROT13</part>
+  </set>
+  <part style="font-size:34px">ABCDEFGHIJKLMNOPQRSTUVWXYZ</part>
+  <part style="font-size:34px">↓</part>
+  <part style="font-size:34px">NOPQRSTUVWXYZABCDEFGHIJKLM</part>
+  <set>
+    <delete-all type="slide-up"/>
+    <part style="font-size:80px">xor暗号</part>
+  </set>
+  <part style="font-size:120px">まとめ</part>
+  <part>・Whitespaceは</part>
+  <part style="color:red">高性能</part>
+  <part>・命令数24種類</part>
+  <part style="color:#666666">（参考:Brainfuck:8種類, Funge:69種類）</part>
+  <part style="font-size:55px">つかおう!!</part>
+  <part>・Brainfuckと合計6回言えたので満足</part>
 </parts>

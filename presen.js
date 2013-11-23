@@ -11,10 +11,67 @@ window.addEventListener('load',function(){
 	xhr.send(null);
 
 	function callback(){
-		var ite=new PresenIterator(xml);
-		var pre=new Presen(ite);
+		//ifのアレ
+		var ifs=xml.getElementsByTagName("if");
+		if(ifs.length===0){
+			callback2();
+			return;
+		}
+		//きいてからはじめる
+		var div=document.createElement("div");
+		var sels=[];
+		document.body.appendChild(div);
+		for(var i=0,l=ifs.length;i<l;i++){
+			div.appendChild((function(p){
+				var iff=ifs.item(i);
+				var label=document.createElement("label");
+				p.appendChild(label);
+				var obj={
+					doc:iff,
+					checked:true,
+				};
+				sels.push(obj);
+				var input=document.createElement("input");
+				input.type="checkbox";
+				input.checked=true;
+				input.addEventListener("change",function(e){
+					obj.checked=input.checked;
+				},false);
+				label.appendChild(input);
+				label.appendChild(document.createTextNode(iff.getAttribute("title")));
+				return p;
+			})(document.createElement("p")));
+		}
+		div.appendChild((function(p){
+			var button=document.createElement("input");
+			button.type="button";
+			p.appendChild(button);
+			button.value="OK";
+			button.addEventListener("click",function(e){
+				//ifの処理
+				var range=xml.createRange();
+				sels.forEach(function(obj){
+					if(obj.checked){
+						//ifの中だけとる
+						range.selectNodeContents(obj.doc);
+						obj.doc.parentNode.insertBefore(range.extractContents(),obj.doc);
+						obj.doc.parentNode.removeChild(obj.doc);
+					}else{
+						//全部けす
+						obj.doc.parentNode.removeChild(obj.doc);
+					}
+				});
+				document.body.removeChild(div);
+				callback2();
+			},false);
+			return p;
+		})(document.createElement("p")));
+		function callback2(){
+			var ite=new PresenIterator(xml);
+			var pre=new Presen(ite);
 
-		pre.init();
+			pre.init();
+		}
 	}
 },false);
 
@@ -106,7 +163,7 @@ Presen.prototype={
 		}
 		function kd(e){
 			if(this.mode=="input" || this.mode=="style")return;
-			switch(e.keyCode){
+			switch(e.keyCode || e.charCode){
 				case 0x5A:case 0x7A://Z
 				this.modechange("step");
 				e.preventDefault();
@@ -193,6 +250,12 @@ Presen.prototype={
 				case "right":
 					setse(part.style,"transform","translate(400px,0)");
 					break;
+				case "slide-left":
+					setse(part.style,"transform","translate(-100vw,0)");
+					break;
+				case "slide-right":
+					setse(part.style,"transform","translate(100vw,0)");
+					break;
 
 				default:
 				}
@@ -219,6 +282,8 @@ Presen.prototype={
 				
 				if(node.nodeName=="box"){
 					part.style.left=px+"px",part.style.top=py+"px";
+				}else if(node.nodeName==="img" && node.getAttribute("width") && node.getAttribute("height")){
+					part.style.left=(px-node.getAttribute("width")/2)+"px",part.style.top=(py-node.getAttribute("height")/2)+"px";
 				}else{
 					part.style.left=(px-part.clientWidth/2)+"px",part.style.top=(py-part.clientHeight/2)+"px";
 				}
@@ -238,6 +303,11 @@ Presen.prototype={
 				case "left":
 				case "right":
 					setse(part.style,"transition","opacity 0.3s ease-in-out, #{pref}transform 0.3s cubic-bezier(0, 0, 0.7, 1.0)");
+					setse(part.style,"transform","translate(0,0)");
+					break;
+				case "slide-left":
+				case "slide-right":
+					setse(part.style,"transition","#{pref}transform 0.3s cubic-bezier(0, 0, 0.7, 1.0)");
 					setse(part.style,"transform","translate(0,0)");
 					break;
 
@@ -320,11 +390,9 @@ Presen.prototype={
 					part.style.overflow="hidden";
 					part.style.whiteSpace="nowrap";
 					//画像
-					setse(part.style,"transition","width "+duration+" linear, height "+duration+" linear, left "+duration+" linear, top "+duration+" linear, left "+duration+" linear, top "+duration+" linear");
 					//画像を載せたdivを生成する
 					part2=document.createElement("div");
 					part2.style.position="absolute";
-					setse(part2.style,"transition","left "+duration+" linear, top "+duration+" linear");
 					part2.style.zIndex="100";
 					//読み込みディレイ発生
 					var imgnode=node.getElementsByTagName("img")[0];
@@ -389,12 +457,23 @@ Presen.prototype={
 				
 				startEffect(type,part,part2);
 				//part.style.backgroundColor=document.defaultView.getComputedStyle(document.body,null).backgroundColor;
+			}else if(node.nodeName==="set"){
+				//複数実行
+				for(var i=0,l=node.childNodes.length;i<l;i++){
+					if(node.childNodes[i].nodeType===Node.ELEMENT_NODE){
+						(command.bind(this))(e,node.childNodes[i],parent);
+					}
+				}
 			}
 			this.setinfo();
 			//エフェクトを始動させる
 			function startEffect(type,part,part2){	//part2: optional
 				document.body.appendChild(part);
 				if(part2)document.body.appendChild(part2);
+				if(type==="img-slide-left" || type==="img-slide-up" || type==="img-slide-right" || type==="img-slide-down"){
+					setse(part.style,"transition","width "+duration+" linear, height "+duration+" linear, left "+duration+" linear, top "+duration+" linear, left "+duration+" linear, top "+duration+" linear");
+					setse(part2.style,"transition","left "+duration+" linear, top "+duration+" linear");
+				}
 				//よくわからないけど間を入れる
 				setTimeout(function(){
 					switch(type){
@@ -436,10 +515,10 @@ Presen.prototype={
 					case "img-slide-down":
 						part2.style.top=document.documentElement.clientHeight+"px";
 						part.style.top=document.documentElement.clientHeight+"px";
-						part.style.heght="0px";
+						part.style.height="0px";
 						break;
 					}
-				},0);
+				},10);
 				setTimeout(function(){
 					part.parentNode.removeChild(part);
 					if(part2)part2.parentNode.removeChild(part2);
@@ -447,9 +526,23 @@ Presen.prototype={
 			}
 		}
 		function setse(st,prop,value){
-			["-webkit-","-moz-","-o-",""].forEach(function(x){
-				st.setProperty(x+prop,value.replace("#{pref}",x),"");
-			});
+			/*
+			if(prop==="transform" || /^transform-\w+$/.test(prop)){
+				//webkitとなしのみ
+				["-webkit-",""].forEach(function(x){
+					st.setProperty(x+prop,value.replace("#{pref}",x),"");
+				});
+			}else if(prop==="transition"){
+				//なし
+				["-webkit-","-moz-","-o-",""].forEach(function(x){
+					st.setProperty(prop,value.replace("#{pref}",x),"");
+				});
+			}else{
+				["-webkit-","-moz-","-o-",""].forEach(function(x){
+					st.setProperty(x+prop,value.replace("#{pref}",x),"");
+				});
+			}*/
+			st.setProperty(prop,value.replace("#{pref}",""),"");
 		}
 
 	},
@@ -576,7 +669,7 @@ PresenIterator.prototype={
 				ret+="("+node.textContent+")";
 			}else if(node.nodeName==="img" || node.nodeName==="video"){
 				ret+="("+node.getAttribute("src")+")";
-			}else if(node.nodeName==="box"){
+			}else if(node.nodeName==="box" || node.nodeName==="set"){
 				ret+="(";
 				var c=node.childNodes;
 				for(var i=0,l=c.length;i<l;i++){
